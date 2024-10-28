@@ -12,7 +12,7 @@ const AdminPanel = () => {
 	const polygons = useTypedSelector(getPolygons)
 	const mapState = useTypedSelector(getMapState)
 
-	const API_KEY: string = '05f8d2ae-bd94-4329-b9f9-7351e2ec9627'
+	const API_KEY: string = '451f295a-dec2-4cc4-8b5d-99f9bf679e8d'
 
 	return (
 		<YMaps
