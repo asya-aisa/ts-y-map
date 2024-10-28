@@ -1,8 +1,8 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, FC, useState } from 'react'
 import { useAdmin } from '../../../screens/admin/useAdmin'
 import styles from '../AdminBoard.module.scss'
 
-const AddNewPolygon = () => {
+const AddNewPolygon: FC = () => {
 	const [newArea, setNewArea] = useState<string>('')
 	const [isNewMode, setIsNewMode] = useState<boolean>(false)
 	const { handleAddNewPolygon } = useAdmin(newArea, setIsNewMode)

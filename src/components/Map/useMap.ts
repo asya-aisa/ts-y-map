@@ -20,7 +20,6 @@ export const useMap = (items: IPolygon, index: number) => {
 
 	const handleEditPolygon = useCallback(
 		(polygon: ymaps.GeoObject) => {
-
 			if (polygon) {
 				const editor = polygon.editor as unknown as {
 					startDrawing: () => void

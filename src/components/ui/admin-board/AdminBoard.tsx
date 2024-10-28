@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { ChangeEvent, FC, useEffect, useState } from 'react'
 import '../../../App.scss'
 import { useTypedSelector } from '../../../hooks/useTypesHooks'
 import { IChangeNewCoord } from '../../../store/polygon/polygon.interface'
@@ -19,9 +19,31 @@ const AdminBoard: FC<IAdminBoard> = ({
 	toggleEdit,
 }) => {
 	const polygons = useTypedSelector(getPolygons)
+	const [inputValue, setInputValue] = useState<string>('')
+	const [searchTerm, setSearchTerm] = useState<string>('')
+
+	const API_KEY = '451f295a-dec2-4cc4-8b5d-99f9bf679e8d'
+
+	useEffect(() => {
+		async function test() {
+			const res = await fetch(
+				`https://geocode-maps.yandex.ru/1.x/?apikey=${API_KEY}&format=json&geocode=${searchTerm}`
+			)
+			const data = await res.json()
+			console.log(data)
+		}
+
+		test()
+	}, [searchTerm])
 
 	return (
 		<div className={styles.adminBoardWrapper}>
+			<input
+				onChange={(e: ChangeEvent<HTMLInputElement>) =>
+					setInputValue(e.target.value)
+				}
+			/>
+			<button onClick={() => setSearchTerm(inputValue)}>search</button>
 			<h1>{header}</h1>
 			{polygons &&
 				polygons.map((el, index) => (

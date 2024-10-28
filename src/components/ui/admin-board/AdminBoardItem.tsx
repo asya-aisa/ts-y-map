@@ -30,8 +30,9 @@ const AdminBoardItem: FC<IAdminBoardItem> = ({
 		toggleEdit(index)
 		if (el.polygonCoord.length) toChangeMapState(el.polygonCoord[0][3])
 	}
+
 	return (
-		<div key={index} className={styles.middleCont}>
+		<div className={styles.middleCont}>
 			<h4 onClick={() => handleShowWorkArea()} className={styles.areaName}>
 				{el.workArea}
 			</h4>

@@ -1,8 +1,8 @@
 import { Polygon } from '@pbe/react-yandex-maps'
 import { FC } from 'react'
 import { IPolygon } from '../../store/polygon/polygon.interface'
+import { polygonOptions } from './polygon.options'
 import { useMap } from './useMap'
-
 
 interface IPolygonItem {
 	items: IPolygon
@@ -11,14 +11,6 @@ interface IPolygonItem {
 
 const PolygonItem: FC<IPolygonItem> = ({ items, index }) => {
 	const { handleEditPolygon } = useMap(items, index)
-
-	const polygonOptions = {
-		fillColor: '#00FF00',
-		strokeColor: '#0000FF',
-		opacity: 0.5,
-		strokeWidth: 3,
-		strokeStyle: 'solid',
-	}
 
 	return (
 		<Polygon

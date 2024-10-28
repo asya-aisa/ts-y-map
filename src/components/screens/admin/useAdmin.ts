@@ -3,7 +3,7 @@ import { useActions } from '../../../hooks/useActions'
 import { IChangeNewCoord } from '../../../store/polygon/polygon.interface'
 
 export const useAdmin = (
-	newArea?: string | undefined,
+	newArea?: string,
 	setIsNewMode?: (value: boolean) => void
 ) => {
 	const { saveCoord, toggleEdit, toAddNewPolygon } = useActions()
@@ -14,6 +14,7 @@ export const useAdmin = (
 				index: index,
 				newCoord: newCoord,
 			})
+
 			toggleEdit(index)
 		},
 		[saveCoord, toggleEdit]
