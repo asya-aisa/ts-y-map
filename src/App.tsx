@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import './App.scss'
 import AdminPanel from './components/screens/admin/AdminPanel'
 
