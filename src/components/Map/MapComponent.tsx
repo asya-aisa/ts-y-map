@@ -12,7 +12,6 @@ interface IMapComponent {
 export const MapComponent: FC<IMapComponent> = ({ polygons, mapState }) => {
 	return (
 		<Map modules={['geoObject.addon.editor']} state={mapState} className='map'>
-			debugger
 			<SearchControl
 				options={{
 					float: 'right',
