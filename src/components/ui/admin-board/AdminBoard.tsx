@@ -3,7 +3,7 @@ import '../../../App.scss'
 import { useActions } from '../../../hooks/useActions'
 import { useTypedSelector } from '../../../hooks/useTypesHooks'
 import { IChangeNewCoord } from '../../../store/polygon/polygon.interface'
-import { getPolygons } from '../../../store/polygon/polygon.slice'
+import { getMapState, getPolygons } from '../../../store/polygon/polygon.slice'
 import AddNewPolygon from './addNewPolygon/AddNewPolygon'
 import styles from './AdminBoard.module.scss'
 import AdminBoardItem from './AdminBoardItem'
@@ -23,6 +23,8 @@ const AdminBoard: FC<IAdminBoard> = ({
 	const [inputValue, setInputValue] = useState<string>('')
 	const [searchTerm, setSearchTerm] = useState<string>('')
 	const [searchCoord, setSearchCoord] = useState<number[]>()
+
+	const isState = useTypedSelector(getMapState)
 
 	const { toChangeMapState } = useActions()
 
@@ -48,6 +50,9 @@ const AdminBoard: FC<IAdminBoard> = ({
 		setSearchTerm(inputValue)
 		if (searchCoord?.length) toChangeMapState(searchCoord)
 	}
+
+	console.log(searchCoord)
+	console.log(isState)
 
 	return (
 		<div className={styles.adminBoardWrapper}>
