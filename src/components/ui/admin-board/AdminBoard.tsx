@@ -48,7 +48,8 @@ const AdminBoard: FC<IAdminBoard> = ({
 
 	const handleSearch = () => {
 		setSearchTerm(inputValue)
-		if (searchCoord?.length) toChangeMapState(searchCoord)
+		if (searchCoord?.length) console.log('hey')
+			toChangeMapState(searchCoord)
 	}
 
 	console.log(searchCoord)
