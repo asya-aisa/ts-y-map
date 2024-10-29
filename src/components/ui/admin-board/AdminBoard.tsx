@@ -38,7 +38,7 @@ const AdminBoard: FC<IAdminBoard> = ({
 			const { response } = await res.json()
 			const newState =
 				response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos
-			const coords = newState.split(' ').map(Number)
+			const coords = newState.split(' ').map(Number).reverse()
 			setSearchCoord(coords)
 			 console.log(response)
 		}
