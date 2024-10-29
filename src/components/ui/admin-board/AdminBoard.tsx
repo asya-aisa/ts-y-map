@@ -1,9 +1,8 @@
 import { ChangeEvent, FC, useEffect, useState } from 'react'
 import '../../../App.scss'
-import { useActions } from '../../../hooks/useActions'
 import { useTypedSelector } from '../../../hooks/useTypesHooks'
 import { IChangeNewCoord } from '../../../store/polygon/polygon.interface'
-import { getMapState, getPolygons } from '../../../store/polygon/polygon.slice'
+import { getPolygons } from '../../../store/polygon/polygon.slice'
 import AddNewPolygon from './addNewPolygon/AddNewPolygon'
 import styles from './AdminBoard.module.scss'
 import AdminBoardItem from './AdminBoardItem'
@@ -24,9 +23,9 @@ const AdminBoard: FC<IAdminBoard> = ({
 	const [searchTerm, setSearchTerm] = useState<string>('')
 	const [searchCoord, setSearchCoord] = useState<number[]>([])
 
-	const isState = useTypedSelector(getMapState)
+	// const isState = useTypedSelector(getMapState)
 
-	const { toChangeMapState } = useActions()
+	// const { toChangeMapState } = useActions()
 
 	const API_KEY = '451f295a-dec2-4cc4-8b5d-99f9bf679e8d'
 
@@ -49,7 +48,7 @@ const AdminBoard: FC<IAdminBoard> = ({
 	const handleSearch = () => {
 		setSearchTerm(inputValue)
 		//if (searchCoord?.length) console.log('hey')
-			//toChangeMapState(searchCoord)
+		//toChangeMapState(searchCoord)
 		console.log('searchcoord', searchCoord)
 	}
 
