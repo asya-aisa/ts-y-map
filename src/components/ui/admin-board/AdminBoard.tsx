@@ -3,7 +3,8 @@ import '../../../App.scss'
 import { useActions } from '../../../hooks/useActions'
 import { useTypedSelector } from '../../../hooks/useTypesHooks'
 import { IChangeNewCoord } from '../../../store/polygon/polygon.interface'
-import { getMapState, getPolygons } from '../../../store/polygon/polygon.slice'
+import { getPolygons } from '../../../store/polygon/polygon.slice'
+import SearchField from '../search-field/SearchField'
 import AddNewPolygon from './addNewPolygon/AddNewPolygon'
 import styles from './AdminBoard.module.scss'
 import AdminBoardItem from './AdminBoardItem'
@@ -24,8 +25,6 @@ const AdminBoard: FC<IAdminBoard> = ({
 	const [searchTerm, setSearchTerm] = useState<string>('')
 	const [searchCoord, setSearchCoord] = useState<number[]>([])
 
-	 const isState = useTypedSelector(getMapState)
-
 	const { toChangeMapState } = useActions()
 
 	const API_KEY = '451f295a-dec2-4cc4-8b5d-99f9bf679e8d'
@@ -40,20 +39,16 @@ const AdminBoard: FC<IAdminBoard> = ({
 				response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos
 			const coords = newState.split(' ').map(Number).reverse()
 			setSearchCoord(coords)
-			 console.log(response)
+
+			console.log(response)
 		}
 
 		test()
 	}, [searchTerm])
 
 	const handleSearch = () => {
-		//setSearchTerm(inputValue)
-		//if (searchCoord?.length) console.log('hey')
 		toChangeMapState(searchCoord)
-		console.log('searchcoord', searchCoord)
 	}
-
-	console.log(isState)
 
 	return (
 		<div className={styles.adminBoardWrapper}>
@@ -62,6 +57,8 @@ const AdminBoard: FC<IAdminBoard> = ({
 					setSearchTerm(e.target.value)
 				}
 			/>
+
+			<SearchField searchTerm={searchTerm} handleSearch={handleSearch} />
 			<button onClick={handleSearch}>search</button>
 			<h1>{header}</h1>
 			{polygons &&
