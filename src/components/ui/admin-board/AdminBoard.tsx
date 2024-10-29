@@ -22,7 +22,7 @@ const AdminBoard: FC<IAdminBoard> = ({
 	const polygons = useTypedSelector(getPolygons)
 	const [inputValue, setInputValue] = useState<string>('')
 	const [searchTerm, setSearchTerm] = useState<string>('')
-	const [searchCoord, setSearchCoord] = useState<number[]>()
+	const [searchCoord, setSearchCoord] = useState<number[]>([])
 
 	const isState = useTypedSelector(getMapState)
 
@@ -40,7 +40,7 @@ const AdminBoard: FC<IAdminBoard> = ({
 				response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos
 			const coords = newState.split(' ').map(Number)
 			setSearchCoord(coords)
-			console.log(response)
+			// console.log(response)
 		}
 
 		test()
@@ -50,10 +50,10 @@ const AdminBoard: FC<IAdminBoard> = ({
 		setSearchTerm(inputValue)
 		//if (searchCoord?.length) console.log('hey')
 			//toChangeMapState(searchCoord)
-		console.log(searchCoord)
+		console.log('searchcoord', searchCoord)
 	}
 
-	console.log(isState)
+	//console.log(isState)
 
 	return (
 		<div className={styles.adminBoardWrapper}>
