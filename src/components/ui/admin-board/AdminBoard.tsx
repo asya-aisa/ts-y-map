@@ -1,5 +1,6 @@
 import { ChangeEvent, FC, useEffect, useState } from 'react'
 import '../../../App.scss'
+import { useActions } from '../../../hooks/useActions'
 import { useTypedSelector } from '../../../hooks/useTypesHooks'
 import { IChangeNewCoord } from '../../../store/polygon/polygon.interface'
 import { getPolygons } from '../../../store/polygon/polygon.slice'
@@ -19,13 +20,13 @@ const AdminBoard: FC<IAdminBoard> = ({
 	toggleEdit,
 }) => {
 	const polygons = useTypedSelector(getPolygons)
-	const [inputValue, setInputValue] = useState<string>('')
+	//const [inputValue, setInputValue] = useState<string>('')
 	const [searchTerm, setSearchTerm] = useState<string>('')
 	const [searchCoord, setSearchCoord] = useState<number[]>([])
 
 	// const isState = useTypedSelector(getMapState)
 
-	// const { toChangeMapState } = useActions()
+	const { toChangeMapState } = useActions()
 
 	const API_KEY = '451f295a-dec2-4cc4-8b5d-99f9bf679e8d'
 
@@ -46,9 +47,9 @@ const AdminBoard: FC<IAdminBoard> = ({
 	}, [searchTerm])
 
 	const handleSearch = () => {
-		setSearchTerm(inputValue)
+		//setSearchTerm(inputValue)
 		//if (searchCoord?.length) console.log('hey')
-		//toChangeMapState(searchCoord)
+		toChangeMapState(searchCoord)
 		console.log('searchcoord', searchCoord)
 	}
 
@@ -58,7 +59,7 @@ const AdminBoard: FC<IAdminBoard> = ({
 		<div className={styles.adminBoardWrapper}>
 			<input
 				onChange={(e: ChangeEvent<HTMLInputElement>) =>
-					setInputValue(e.target.value)
+					setSearchTerm(e.target.value)
 				}
 			/>
 			<button onClick={handleSearch}>search</button>
