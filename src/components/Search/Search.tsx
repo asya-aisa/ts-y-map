@@ -2,7 +2,7 @@ import { ChangeEvent, FC, useEffect, useState } from 'react'
 import { useActions } from '../../hooks/useActions'
 import { useDebounce } from '../../hooks/useDebounce'
 import SearchField from '../ui/search-field/SearchField'
-import styles from './Search.module.scss'
+//import styles from './Search.module.scss'
 import SearchList from './SearchList/SearchList'
 
 const Search: FC = () => {
@@ -47,7 +47,9 @@ const Search: FC = () => {
 	}
 
 	return (
-		<div className={styles.wrapper}>
+		<div 
+		//className={styles.wrapper}
+		>
 			<SearchField searchTerm={searchTerm} handleSearch={handleSearch} />
 			{result && <SearchList result={result} handleSelect={handleSelect} />}
 		</div>

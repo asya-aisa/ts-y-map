@@ -6,6 +6,7 @@ import { getPolygons } from '../../../store/polygon/polygon.slice'
 import AddNewPolygon from './addNewPolygon/AddNewPolygon'
 import styles from './AdminBoard.module.scss'
 import AdminBoardItem from './AdminBoardItem'
+import Search from '../../Search/Search'
 
 interface IAdminBoard {
 	header: string
@@ -58,6 +59,8 @@ const AdminBoard: FC<IAdminBoard> = ({
 
 			{/* <SearchField searchTerm={searchTerm} handleSearch={handleSearch} />
 			<button onClick={handleSearch}>search</button> */}
+
+			<Search />
 			<h1>{header}</h1>
 			{polygons &&
 				polygons.map((el, index) => (

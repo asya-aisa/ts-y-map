@@ -1,5 +1,5 @@
 import { ChangeEvent, FC } from 'react'
-import styles from './SearchField.module.scss'
+//import styles from './SearchField.module.scss'
 
 interface ISearchField {
 	searchTerm: string
@@ -8,7 +8,9 @@ interface ISearchField {
 
 const SearchField: FC<ISearchField> = ({ searchTerm, handleSearch }) => {
 	return (
-		<div className={styles.search}>
+		<div
+		//className={styles.search}
+		>
 			<input placeholder='Поиск' value={searchTerm} onChange={handleSearch} />
 		</div>
 	)

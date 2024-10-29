@@ -1,12 +1,14 @@
 import { FC } from 'react'
-import styles from './SearchList.module.scss'
+//import styles from './SearchList.module.scss'
 
 const SearchList: FC<{ result: string; handleSelect: () => void }> = ({
 	result,
 	handleSelect,
 }) => {
 	return (
-		<div className={styles.list} onClick={handleSelect}>
+		<div 
+		//className={styles.list} 
+			onClick={handleSelect}>
 			{result ? (
 				<div>{result}</div>
 			) : (
