@@ -5,7 +5,7 @@ import { toChangeMapState } from '../../store/polygon/polygon.slice'
 
 export const useSearch = () => {
 	const [searchTerm, setSearchTerm] = useState('')
-	const [searchCoord, setSearchCoord] = useState([])
+	const [searchCoord, setSearchCoord] = useState<number[]>([])
 	const [result, setResult] = useState('')
 	const debouncedSearch = useDebounce(searchTerm, 500)
 
