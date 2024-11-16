@@ -14,7 +14,7 @@ export const useSearch = () => {
 			const res = await fetch(`${API_URL}${debouncedSearch}`)
 			const { response } = await res.json()
 			const newState =
-				response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos
+				response?.GeoObjectCollection.featureMember[0].GeoObject.Point.pos
 			const coords = newState.split(' ').map(Number).reverse()
 			setSearchCoord(coords)
 
@@ -26,6 +26,7 @@ export const useSearch = () => {
 			setResult(city + description)
 
 			console.log(response)
+			console.log(newState)
 		}
 
 		fetchData()
