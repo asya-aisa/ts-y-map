@@ -5,19 +5,19 @@ import { polygonOptions } from './polygon.options'
 import { useMap } from './useMap'
 
 interface IPolygonItem {
-	items: IPolygon
+	item: IPolygon
 	index: number
 }
 
-const PolygonItem: FC<IPolygonItem> = ({ items, index }) => {
-	const { handleEditPolygon } = useMap(items, index)
+const PolygonItem: FC<IPolygonItem> = ({ item, index }) => {
+	const { handleEditPolygon } = useMap(item, index)
 
 	return (
 		<Polygon
-			geometry={items.polygonCoord}
+			geometry={item.polygonCoord}
 			options={polygonOptions}
 			modules={['geoObject.addon.balloon']}
-			properties={{ balloonContent: items.workArea }}
+			properties={{ balloonContent: item.workArea }}
 			instanceRef={polygon =>
 				handleEditPolygon(polygon as unknown as ymaps.GeoObject)
 			}

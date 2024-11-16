@@ -13,8 +13,8 @@ export const MapComponent: FC = () => {
 		<Map modules={['geoObject.addon.editor']} state={mapState} className='map'>
 			{polygons &&
 				polygons.map((el, index) => (
-					<div key={index}>
-						<PolygonItem items={el} index={index} />
+					<div key={el.workArea}>
+						<PolygonItem item={el} index={index} />
 					</div>
 				))}
 		</Map>

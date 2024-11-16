@@ -1,15 +1,12 @@
-import { useCallback, useEffect, useMemo } from 'react'
+import { useCallback, useEffect } from 'react'
 import { useActions } from '../../hooks/useActions'
 import { useTypedSelector } from '../../hooks/useTypesHooks'
 import { IPolygon } from '../../store/polygon/polygon.interface'
-import { TypeRootState } from '../../store/store'
 
-export const useMap = (items: IPolygon, index: number) => {
+export const useMap = (item: IPolygon, index: number) => {
 	const { changeNewCoord } = useActions()
-	const isEdit = useTypedSelector(
-		(state: TypeRootState) => state.polygons[index].isEdit
-	)
-	const polygonCoord = items.polygonCoord
+	const isEdit = useTypedSelector(state => state.polygons[index].isEdit)
+	const polygonCoord = item.polygonCoord
 
 	useEffect(() => {
 		changeNewCoord({
@@ -21,10 +18,12 @@ export const useMap = (items: IPolygon, index: number) => {
 	const handleEditPolygon = useCallback(
 		(polygon: ymaps.GeoObject) => {
 			if (polygon) {
+				//здесь переназначаю тип, т.к. в документации yandex-maps ошибка и для метода startDrawing() нет  встроенной типизации
 				const editor = polygon.editor as unknown as {
 					startDrawing: () => void
 					stopDrawing: () => void
 				}
+
 				if (isEdit) {
 					if (polygonCoord.length) polygon.editor.startEditing()
 					else editor.startDrawing()
@@ -44,10 +43,7 @@ export const useMap = (items: IPolygon, index: number) => {
 		[index, isEdit, changeNewCoord, polygonCoord.length]
 	)
 
-	return useMemo(
-		() => ({
-			handleEditPolygon,
-		}),
-		[handleEditPolygon]
-	)
+	return {
+		handleEditPolygon,
+	}
 }

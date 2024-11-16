@@ -5,6 +5,7 @@ import {
 	IChangeNewCoord,
 	IPolygon,
 } from '../../../store/polygon/polygon.interface'
+import { Button } from '../button/Button'
 import styles from './AdminBoard.module.scss'
 
 interface IAdminBoardItem {
@@ -37,13 +38,12 @@ const AdminBoardItem: FC<IAdminBoardItem> = ({
 				{el.workArea}
 			</h4>
 			{el.isEdit ? (
-				<button
+				<Button
+					text='save'
 					onClick={() => saveCoordinates({ index, newCoord: el.newCoord })}
-				>
-					save
-				</button>
+				/>
 			) : (
-				<button onClick={() => handleEdit()}>редактировать</button>
+				<Button text='редактировать' onClick={() => handleEdit()} />
 			)}
 		</div>
 	)

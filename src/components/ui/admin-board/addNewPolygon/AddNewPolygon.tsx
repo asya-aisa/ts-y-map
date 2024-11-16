@@ -1,20 +1,20 @@
 import { ChangeEvent, FC, useState } from 'react'
 import { useAdmin } from '../../../screens/admin/useAdmin'
+import { Button } from '../../button/Button'
 import styles from '../AdminBoard.module.scss'
 
 const AddNewPolygon: FC = () => {
-	const [newArea, setNewArea] = useState<string>('')
-	const [isNewMode, setIsNewMode] = useState<boolean>(false)
+	const [newArea, setNewArea] = useState('')
+	const [isNewMode, setIsNewMode] = useState(false)
 	const { handleAddNewPolygon } = useAdmin(newArea, setIsNewMode)
 
 	return (
 		<div className={styles.newPolygonCont}>
-			<button
-				onClick={() => setIsNewMode(true)}
+			<Button
+				text='Добавить новый полигон'
 				className={styles.addNewPolygon}
-			>
-				Добавить новый полигон
-			</button>
+				onClick={() => setIsNewMode(true)}
+			/>
 			{isNewMode && (
 				<div>
 					<input
@@ -23,7 +23,8 @@ const AddNewPolygon: FC = () => {
 						}
 						placeholder='укажите название рабочей зоны'
 					/>
-					<button onClick={() => handleAddNewPolygon()}>создать</button>
+
+					<Button text='создать' onClick={() => handleAddNewPolygon()} />
 				</div>
 			)}
 		</div>

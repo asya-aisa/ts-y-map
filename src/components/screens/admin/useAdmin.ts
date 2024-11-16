@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react'
+import { useCallback } from 'react'
 import { useActions } from '../../../hooks/useActions'
 import { IChangeNewCoord } from '../../../store/polygon/polygon.interface'
 
@@ -20,17 +20,14 @@ export const useAdmin = (
 		[saveCoord, toggleEdit]
 	)
 
-	const handleAddNewPolygon = useCallback(() => {
+	const handleAddNewPolygon = () => {
 		toAddNewPolygon(newArea)
 		alert('нарисуйте новый полигон на карте')
 		if (setIsNewMode) setIsNewMode(false)
-	}, [newArea, toAddNewPolygon, setIsNewMode])
+	}
 
-	return useMemo(
-		() => ({
-			saveCoordinates,
-			handleAddNewPolygon,
-		}),
-		[saveCoordinates, handleAddNewPolygon]
-	)
+	return {
+		saveCoordinates,
+		handleAddNewPolygon,
+	}
 }
