@@ -1,19 +1,14 @@
 import { ChangeEvent, FC } from 'react'
 import SearchField from '../ui/search-field/SearchField'
 //import styles from './Search.module.scss'
-import { toChangeMapState } from '../../store/polygon/polygon.slice'
 import SearchList from './SearchList/SearchList'
 import { useSearch } from './useSearch'
 
 const Search: FC = () => {
-	const { setSearchTerm, searchCoord, searchTerm, result } = useSearch()
+	const { setSearchTerm, searchTerm, result, handleSelect } = useSearch()
 
 	const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
 		setSearchTerm(e.target.value)
-	}
-
-	const handleSelect = () => {
-		toChangeMapState(searchCoord)
 	}
 
 	return (
