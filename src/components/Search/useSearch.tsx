@@ -35,7 +35,7 @@ export const useSearch = () => {
 
 	const handleSelect = useCallback(() => {
 		toChangeMapState(searchCoord)
-		console.log('yes')
+		console.log(searchCoord)
 	}, [searchCoord])
 
 	return useMemo(
