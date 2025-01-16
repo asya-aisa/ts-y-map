@@ -8,7 +8,7 @@ const initialState: IPolygonInitialState = {
 		zoom: 10,
 	},
 	polygons: [
-		{id: 1,
+		{   id: 1,
 			isEdit: false,
 			newCoord: [],
 			polygonCoord: [
@@ -21,7 +21,7 @@ const initialState: IPolygonInitialState = {
 			],
 			workArea: 'Москва + МО',
 		},
-		{id:2,
+		{   id:2,
 			isEdit: false,
 			newCoord: [],
 			polygonCoord: [
@@ -34,7 +34,7 @@ const initialState: IPolygonInitialState = {
 			],
 			workArea: 'Воронеж',
 		},
-		{id: 3,
+		{   id: 3,
 			isEdit: false,
 			newCoord: [],
 			polygonCoord: [
@@ -83,14 +83,6 @@ export const polygonSlice = createSlice({
 	},
 })
 
-export const {
-	toggleEdit,
-	changeNewCoord,
-	saveCoord,
-	toChangeMapState,
-	toAddNewPolygon,
-	toDeletePolygon
-} = polygonSlice.actions
 export const getPolygons = (state: TypeRootState) => state.polygons
 export const getMapState = (state: TypeRootState) => state.mapState
 export const { reducer } = polygonSlice

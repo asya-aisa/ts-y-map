@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { API_URL } from '../../configs/api.config'
 import { useDebounce } from '../../hooks/useDebounce'
-import { toChangeMapState } from '../../store/polygon/polygon.slice'
+//import { toChangeMapState } from '../../store/polygon/polygon.slice'
 
 export const useSearch = () => {
 	const [searchTerm, setSearchTerm] = useState('')
@@ -34,7 +34,7 @@ export const useSearch = () => {
 	}, [debouncedSearch, searchTerm])
 
 	const handleSelect = useCallback(() => {
-		toChangeMapState(searchCoord)
+		//toChangeMapState(searchCoord)
 		console.log(searchCoord)
 	}, [searchCoord])
 
