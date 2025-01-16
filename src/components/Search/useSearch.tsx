@@ -7,8 +7,8 @@ export const useSearch = () => {
 	const [searchTerm, setSearchTerm] = useState('')
 	const [searchCoord, setSearchCoord] = useState<number[]>([])
 	const [result, setResult] = useState('')
-	const debouncedSearch = useDebounce(searchTerm, 500)
 	const { toChangeMapState } = useActions()
+	const debouncedSearch = useDebounce(searchTerm, 500)
 	
 
 	useEffect(() => {
@@ -27,9 +27,6 @@ export const useSearch = () => {
 			const city = response.GeoObjectCollection.featureMember[0].GeoObject.name
 
 			setResult(city + description)
-
-			console.log(response)
-			console.log(newState)
 		}
 
 		fetchData()
@@ -37,7 +34,6 @@ export const useSearch = () => {
 
 	const handleSelect = useCallback(() => {
 		toChangeMapState(searchCoord)
-		console.log(searchCoord)
 	}, [searchCoord])
 
 	return useMemo(
