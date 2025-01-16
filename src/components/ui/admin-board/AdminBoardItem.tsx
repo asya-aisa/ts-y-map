@@ -21,7 +21,7 @@ const AdminBoardItem: FC<IAdminBoardItem> = ({
 	saveCoordinates,
 	toggleEdit,
 }) => {
-	const { toChangeMapState } = useActions()
+	const { toChangeMapState, toDeletePolygon } = useActions()
 
 	const handleShowWorkArea = () => {
 		if (el.polygonCoord.length) toChangeMapState(el.polygonCoord[0][3])
@@ -42,8 +42,10 @@ const AdminBoardItem: FC<IAdminBoardItem> = ({
 					text='save'
 					onClick={() => saveCoordinates({ index, newCoord: el.newCoord })}
 				/>
-			) : (
+			) : (<>
 				<Button text='редактировать' onClick={() => handleEdit()} />
+					<Button text='delete' onClick={() => toDeletePolygon(el.id)} />
+			</>
 			)}
 		</div>
 	)

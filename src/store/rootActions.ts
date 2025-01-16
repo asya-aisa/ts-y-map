@@ -3,6 +3,7 @@ import {
 	saveCoord,
 	toAddNewPolygon,
 	toChangeMapState,
+	toDeletePolygon,
 	toggleEdit,
 } from './polygon/polygon.slice'
 
@@ -11,5 +12,6 @@ export const allActions = {
 	saveCoord,
 	toAddNewPolygon,
 	toChangeMapState,
+	toDeletePolygon,
 	toggleEdit,
 }

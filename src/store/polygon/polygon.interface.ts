@@ -3,6 +3,7 @@ export interface IMapState {
 	zoom: number
 }
 export interface IPolygon {
+	id: number
 	isEdit: boolean
 	newCoord: [number[][]] | []
 	polygonCoord: [number[][]] | []

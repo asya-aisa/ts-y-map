@@ -9,6 +9,7 @@ const AdminPanel = () => {
 	const { toggleEdit } = useActions()
 	const { saveCoordinates } = useAdmin()
 
+
 	return (
 		<YMaps
 		query={{
