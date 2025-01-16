@@ -1,4 +1,4 @@
-import { Map } from '@pbe/react-yandex-maps'
+import { Map, SearchControl } from '@pbe/react-yandex-maps'
 import { FC } from 'react'
 import '../../App.scss'
 import { useTypedSelector } from '../../hooks/useTypesHooks'
@@ -11,6 +11,9 @@ export const MapComponent: FC = () => {
 
 	return (
 		<Map modules={['geoObject.addon.editor']} state={mapState} className='map'>
+			<SearchControl  options={{
+				float: 'right'
+			}}/>
 			{polygons &&
 				polygons.map((el, index) => (
 					<div key={el.workArea}>
