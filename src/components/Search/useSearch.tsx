@@ -16,7 +16,7 @@ export const useSearch = () => {
 			const { response } = await res.json()
 			const newState =
 				response?.GeoObjectCollection.featureMember[0].GeoObject.Point.pos
-			const coords = newState.split(' ').map(Number).reverse()
+			const coords = newState?.split(' ').map(Number).reverse()
 			setSearchCoord(coords)
 
 			const description =
